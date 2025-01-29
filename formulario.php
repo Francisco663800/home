@@ -29,7 +29,7 @@
                     </select>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <button type="submit" name="accion" value="todos" class="btn btn-primary">Mostrar Todos</button>
+                    <button type="submit" formaction="mostrar_todo.php" class="btn btn-primary">Mostrar Todos</button>
                     <button type="submit" name="accion" value="filtrar_nombre" class="btn btn-success">Filtrar por Nombre</button>
                     <button type="submit" name="accion" value="filtrar_edad" class="btn btn-info">Filtrar por Edad</button>
                     <button type="submit" name="accion" value="filtrar_promocion" class="btn btn-warning">Filtrar por Promoción</button>
