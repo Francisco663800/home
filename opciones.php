@@ -1,26 +1,36 @@
 <?php
-// Incluir el archivo de conexión
+// Incluir el archivo de conexión a la base de datos
 include('conexion.php');
 
-// Variables para filtros
-$accion = isset($_GET['accion']) ? $_GET['accion'] : '';
-$nombre = isset($_GET['nombre']) ? $_GET['nombre'] : '';
-$edad = isset($_GET['edad']) ? $_GET['edad'] : '';
-$promociona = isset($_GET['promociona']) ? $_GET['promociona'] : '';
+// Obtener valores enviados por GET, asegurando que existan
+$accion = $_GET['accion'] ?? ''; // Operador ?? asigna un valor por defecto ('') si la variable no está definida
+$nombre = $_GET['nombre'] ?? '';
+$edad = $_GET['edad'] ?? '';
+$promociona = $_GET['promociona'] ?? '';
 
-// Consulta base
+// Definir la consulta base
 $query = "SELECT id, nombre, curso, edad, promociona FROM alumnos";
 
-// Modificar la consulta según la acción
-if ($accion == 'filtrar_nombre' && !empty($nombre)) {
-    $query .= " WHERE nombre LIKE '%$nombre%'";
-} elseif ($accion == 'filtrar_edad' && !empty($edad)) {
-    $query .= " WHERE edad = $edad";
-} elseif ($accion == 'filtrar_promocion' && !empty($promociona)) {
-    $query .= " WHERE promociona = '$promociona'";
+// Array para almacenar las condiciones de filtrado
+$filtros = [];
+
+// Agregar condiciones a la consulta si se han enviado filtros válidos
+if ($accion === 'filtrar_nombre' && !empty($nombre)) {
+    $filtros[] = "nombre LIKE '%" . mysqli_real_escape_string($conexion, $nombre) . "%'";
+}
+if ($accion === 'filtrar_edad' && !empty($edad)) {
+    $filtros[] = "edad = " . intval($edad); // intval convierte a número para evitar inyección SQL
+}
+if ($accion === 'filtrar_promocion' && !empty($promociona)) {
+    $filtros[] = "promociona = '" . mysqli_real_escape_string($conexion, $promociona) . "'";
 }
 
-// Ejecutar la consulta
+// Si hay filtros, agregarlos a la consulta SQL
+if (!empty($filtros)) {
+    $query .= " WHERE " . implode(' AND ', $filtros);
+}
+
+// Ejecutar la consulta SQL
 $resultado = mysqli_query($conexion, $query);
 
 // Verificar si la consulta fue exitosa
