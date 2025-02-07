@@ -4,22 +4,18 @@ $servidor = "localhost"; // Nombre del servidor (por defecto localhost)
 $usuario = "root";       // Usuario (por defecto root en XAMPP)
 $contrasena = "";        // Contraseña (por defecto vacío en XAMPP)
 $nombre_base_datos = "escuela"; // Nombre de la base de datos
-$puerto=3307;
 
 // Establecer la conexión
-$conexion = mysqli_connect($servidor, $usuario, $contrasena, $nombre_base_datos,$puerto);
+$conn = mysqli_connect($servidor, $usuario, $contrasena, $nombre_base_datos, 3307);
 
 // Verificar si la conexión fue exitosa
-if (!$conexion) {
+if (!$conn) {
     die("Error de conexión al servidor MySQL: " . mysqli_connect_error());
 }
 
 // Verificar si la base de datos se ha seleccionado correctamente
-if (!mysqli_select_db($conexion, $nombre_base_datos)) {
-    die("Error al seleccionar la base de datos: " . mysqli_error($conexion));
+if (!mysqli_select_db($conn, $nombre_base_datos)) {
+    die("Error al seleccionar la base de datos: " . mysqli_error($conn));
 }
-
-// Si llegamos aquí, la conexión y la selección de base de datos fueron exitosas
-// Cerrar la conexión cuando ya no sea necesaria
-// mysqli_close($conexion);
 ?>
+
