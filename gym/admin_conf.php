@@ -18,10 +18,10 @@ include('conexion.php');
     <h1>Panel de Administración</h1>
 
     <ul>
-        <li><a href="usuarios.html">Gestionar Usuarios</a></li>
-        <li><a href="configuracion.html">Configuración</a></li>
-        <li><a href="reportes.html">Ver Reportes</a></li>
-        <li><a href="salir.html">Cerrar Sesión</a></li>
+        <li><a href="usuarios.php">Gestionar Usuarios</a></li>
+        <li><a href="configuracion.php">Configuración</a></li>
+        <li><a href="reportes.php">Ver Reportes</a></li>
+        <li><a href="salir.php">Cerrar Sesión</a></li>
     </ul>
 
 </body>
