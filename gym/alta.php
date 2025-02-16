@@ -30,7 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                           VALUES ('$correo', '1234', 'cliente', '$id_cliente')";
 
         if (mysqli_query($conexion, $query_usuario)) {
-            echo "<script>alert('Cliente y usuario registrados correctamente'); window.location.href='login.html';</script>";
+            echo "<script>alert('Cliente y usuario registrados correctamente'); window.location.href='login.php';</script>";
+            exit();
         } else {
             echo "<script>alert('Error al crear el usuario: " . mysqli_error($conexion) . "');</script>";
         }
