@@ -193,3 +193,64 @@ INSERT INTO Reservas (id_cliente, id_clase, fecha_reserva) VALUES
 (18, 8, '2025-03-03'),
 (19, 9, '2025-03-04'),
 (20, 10, '2025-03-05');
+
+
+
+-- Tabla de Usuarios (Para Login)
+CREATE TABLE Usuarios (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    correo VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    tipo ENUM('cliente', 'trabajador') NOT NULL,
+    id_cliente INT NULL,
+    id_entrenador INT NULL,
+    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente) ON DELETE CASCADE,
+    FOREIGN KEY (id_entrenador) REFERENCES Entrenadores(id_entrenador) ON DELETE CASCADE
+);
+
+-- Insertar Clientes en Usuarios con contraseña "1234" encriptada
+INSERT INTO Usuarios (correo, password, tipo, id_cliente, id_entrenador) VALUES
+('lucas.morales@mail.com', '1234', 'cliente', 1, NULL),
+('natalia.silva@mail.com', '1234', 'cliente', 2, NULL),
+('raul.mendoza@mail.com', '1234', 'cliente', 3, NULL),
+('valeria.fuentes@mail.com', '1234', 'cliente', 4, NULL),
+('emilio.ortega@mail.com', '1234', 'cliente', 5, NULL),
+('carmen.reyes@mail.com', '1234', 'cliente', 6, NULL),
+('fernando.guzman@mail.com', '1234', 'cliente', 7, NULL),
+('paula.lara@mail.com', '1234', 'cliente', 8, NULL),
+('sergio.dominguez@mail.com', '1234', 'cliente', 9, NULL),
+('adriana.herrera@mail.com', '1234', 'cliente', 10, NULL),
+('roberto.suarez@mail.com', '1234', 'cliente', 11, NULL),
+('elisa.navarro@mail.com', '1234', 'cliente', 12, NULL),
+('diego.ortega@mail.com', '1234', 'cliente', 13, NULL),
+('monica.jimenez@mail.com', '1234', 'cliente', 14, NULL),
+('ricardo.vargas@mail.com', '1234', 'cliente', 15, NULL),
+('laura.perez@mail.com', '1234', 'cliente', 16, NULL),
+('gabriel.rios@mail.com', '1234', 'cliente', 17, NULL),
+('daniela.fernandez@mail.com', '1234', 'cliente', 18, NULL),
+('jose.gomez@mail.com', '1234', 'cliente', 19, NULL),
+('esteban.luna@mail.com', '1234', 'cliente', 20, NULL),
+('andrea.castillo@mail.com', '1234', 'cliente', 21, NULL),
+('felipe.moreno@mail.com', '1234', 'cliente', 22, NULL),
+('isabel.pacheco@mail.com', '1234', 'cliente', 23, NULL),
+('javier.santos@mail.com', '1234', 'cliente', 24, NULL),
+('liliana.mendez@mail.com', '1234', 'cliente', 25, NULL),
+('tomas.rojas@mail.com', '1234', 'cliente', 26, NULL),
+('silvia.benitez@mail.com', '1234', 'cliente', 27, NULL),
+('mauricio.garcia@mail.com', '1234', 'cliente', 28, NULL),
+('camila.vargas@mail.com', '1234', 'cliente', 29, NULL),
+('rodrigo.salas@mail.com', '1234', 'cliente', 30, NULL);
+
+
+-- Insertar Entrenadores en Usuarios con contraseña "1234" encriptada
+INSERT INTO Usuarios (correo, password, tipo, id_cliente, id_entrenador) VALUES
+('pedro.martinez@mail.com', '1234', 'trabajador', NULL, 1),
+('lucia.gomez@mail.com', '1234', 'trabajador', NULL, 2),
+('javier.fernandez@mail.com', '1234', 'trabajador', NULL, 3),
+('carla.lopez@mail.com', '1234', 'trabajador', NULL, 4),
+('raul.sanchez@mail.com', '1234', 'trabajador', NULL, 5),
+('marina.diaz@mail.com', '1234', 'trabajador', NULL, 6),
+('fernando.ruiz@mail.com', '1234', 'trabajador', NULL, 7),
+('natalia.ortega@mail.com', '1234', 'trabajador', NULL, 8),
+('hugo.perez@mail.com', '1234', 'trabajador', NULL, 9),
+('andrea.vargas@mail.com', '1234', 'trabajador', NULL, 10);

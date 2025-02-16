@@ -1,6 +1,43 @@
 <?php
+session_start();
+require 'conexion.php';
+
 // Incluir el archivo de conexión (si es necesario)
-include('conexion.php');
+if (!isset($_SESSION['id_usuario'])) {
+    $volver_url = 'login.php';
+} else {
+    $volver_url = ($_SESSION['tipo'] === 'trabajador') ? 'trabajador_conf.php' : 'login.php';
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nombre = mysqli_real_escape_string($conexion, $_POST['nombre']);
+    $apellido = mysqli_real_escape_string($conexion, $_POST['apellido']);
+    $fecha_nacimiento = mysqli_real_escape_string($conexion, $_POST['fecha_nacimiento']);
+    $telefono = mysqli_real_escape_string($conexion, $_POST['telefono']);
+    $correo = mysqli_real_escape_string($conexion, $_POST['correo']);
+    $direccion = mysqli_real_escape_string($conexion, $_POST['direccion']);
+
+    // Insertar el cliente en la base de datos
+    $query_cliente = "INSERT INTO clientes (nombre, apellido, fecha_nacimiento, telefono, correo, direccion, fecha_registro) 
+                      VALUES ('$nombre', '$apellido', '$fecha_nacimiento', '$telefono', '$correo', '$direccion', NOW())";
+
+    if (mysqli_query($conexion, $query_cliente)) {
+        // Obtener el ID del cliente recién insertado
+        $id_cliente = mysqli_insert_id($conexion);
+
+        // Crear la cuenta de usuario automáticamente con la contraseña 1234
+        $query_usuario = "INSERT INTO Usuarios (correo, password, tipo, id_cliente) 
+                          VALUES ('$correo', '1234', 'cliente', '$id_cliente')";
+
+        if (mysqli_query($conexion, $query_usuario)) {
+            echo "<script>alert('Cliente y usuario registrados correctamente'); window.location.href='login.html';</script>";
+        } else {
+            echo "<script>alert('Error al crear el usuario: " . mysqli_error($conexion) . "');</script>";
+        }
+    } else {
+        echo "<script>alert('Error al registrar el cliente: " . mysqli_error($conexion) . "');</script>";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -18,7 +55,7 @@ include('conexion.php');
             <div class="card p-4 shadow-sm">
                 <h1 class="text-center mb-4">Registro de Clientes</h1>
 
-                <form action="New_Cliente.php" method="POST">
+                <form action="alta.php" method="POST">
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre del Cliente</label>
                         <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Introduce el nombre" required>
@@ -46,7 +83,7 @@ include('conexion.php');
 
                     <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-primary">Registrar</button>
-                        <a href="trabajador_conf.php" class="btn btn-secondary">Volver</a>
+                        <a href="<?php echo $volver_url; ?>" class="btn btn-secondary">Volver</a>
                     </div>
                 </form>
             </div>

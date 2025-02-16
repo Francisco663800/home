@@ -51,8 +51,7 @@ if (!$resultado) {
         </div>
         <div class="text-center mt-4">
             <a href="trabajador_conf.php" class="btn btn-primary">Volver</a>
-            <a href="editar_clases_conf.php" class="btn btn-warning">Editar</a>
-            <a href="borrar_clases_conf.php" class="btn btn-danger">Borrar</a>
+            <a href="modificar_clase.php" class="btn btn-warning">Editar</a>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
