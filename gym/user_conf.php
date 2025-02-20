@@ -20,7 +20,7 @@ include('conexion.php');
                     <h1 class="text-center mb-4">Panel de Usuario</h1>
                     <ul class="list-group">
                         <li class="list-group-item"><a href="perfil.php" class="text-decoration-none">Mi Perfil</a></li>
-                        <li class="list-group-item"><a href="ajustes.php" class="text-decoration-none">Mostrar Clases</a></li>
+                        <li class="list-group-item"><a href="clases_user.php" class="text-decoration-none">Mostrar Clases</a></li>
                         <li class="list-group-item"><a href="historial.php" class="text-decoration-none">Mostrar Cuantías</a></li>
                         <li class="list-group-item"><a href="horarios.php" class="text-decoration-none">Horarios</a></li>
                         <li class="list-group-item"><a href="pagar.php" class="text-decoration-none">Pagar Cuota</a></li>
