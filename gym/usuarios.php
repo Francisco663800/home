@@ -39,7 +39,7 @@ if (!$resultado) {
                 </thead>
                 <tbody>
                     <?php
-                    while ($row = mysqli_fetch_assoc($resultado)) {
+                    foreach ($resultado as $row) {
                         echo "<tr>
                                 <td>{$row['id_cliente']}</td>
                                 <td>{$row['nombre']}</td>

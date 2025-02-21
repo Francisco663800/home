@@ -10,6 +10,7 @@ include('conexion.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Usuario</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-light">
 
@@ -19,11 +20,9 @@ include('conexion.php');
                 <div class="card p-4 shadow-sm">
                     <h1 class="text-center mb-4">Panel de Usuario</h1>
                     <ul class="list-group">
-                        <li class="list-group-item"><a href="perfil.php" class="text-decoration-none">Mi Perfil</a></li>
                         <li class="list-group-item"><a href="clases_user.php" class="text-decoration-none">Mostrar Clases</a></li>
-                        <li class="list-group-item"><a href="historial.php" class="text-decoration-none">Mostrar Cuantías</a></li>
+                        <li class="list-group-item"><a href="pago.html" class="text-decoration-none">Mostrar Cuotas</a></li>
                         <li class="list-group-item"><a href="horarios.php" class="text-decoration-none">Horarios</a></li>
-                        <li class="list-group-item"><a href="pagar.php" class="text-decoration-none">Pagar Cuota</a></li>
                         <li class="list-group-item"><a href="salir.php" class="text-decoration-none text-danger">Cerrar Sesión</a></li>
                     </ul>
                 </div>

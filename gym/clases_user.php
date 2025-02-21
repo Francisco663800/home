@@ -34,14 +34,14 @@ if (!$resultado) {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while ($row = mysqli_fetch_assoc($resultado)) : ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($row['nombre']); ?></td>
-                            <td><?php echo htmlspecialchars($row['cupo_maximo']); ?></td>
-                            <td><?php echo htmlspecialchars($row['horario']); ?></td>
-                            <td><?php echo htmlspecialchars($row['duracion']); ?></td>
-                        </tr>
-                    <?php endwhile; ?>
+                    <?php foreach ($resultado as $row) {
+                        echo "<tr>";
+                        echo "<td>" . htmlspecialchars($row['nombre']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['cupo_maximo']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['horario']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['duracion']) . "</td>";
+                        echo "</tr>";
+                    } ?>
                 </tbody>
             </table>
         </div>

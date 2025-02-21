@@ -1,0 +1,56 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Estilos para la sección hero */
+.hero {
+    background: url('https://source.unsplash.com/1600x900/?gym,fitness') center/cover no-repeat;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.cta-btn {
+    background-color: #ff4500;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: white;
+    text-transform: uppercase;
+}
+
+/* Estilos para la sección de características */
+.features-section {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.features-section h2 {
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.features-section .col-md-4 h3 {
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #343a40;
+}
+
+.features-section .col-md-4 p {
+    font-size: 1em;
+    color: #6c757d;
+}
+
+/* Estilos para el footer */
+footer {
+    background-color: #343a40;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    margin-top: 50px;
+}
