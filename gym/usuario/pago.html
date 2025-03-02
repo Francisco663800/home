@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pago.css">
+    <title>Planes de Membresía</title>
+</head>
+<body>
+
+    <h1 class="titulo">Nuestros Planes</h1>
+    
+    <div class="planes-container">
+        <div class="plan-card">
+            <h2>Mensual Básico</h2>
+            <p>💰 30,00€</p>
+            <p>Acceso ilimitado a gimnasio durante un mes</p>
+            <p>30,00€ / MES</p>
+            <form action="pago.php" method="POST">
+                <input type="hidden" name="plan" value="Mensual Básico">
+                <input type="hidden" name="monto" value="30.00">
+                <button type="submit" class="btn">INSCRIBIRME</button>
+            </form>
+        </div>
+
+        <div class="plan-card">
+            <h2>Mensual Premium</h2>
+            <p>💰 50,00€</p>
+            <p>Acceso ilimitado + clases dirigidas durante un mes</p>
+            <p>50,00€ / MES</p>
+            <form action="pago.php" method="POST">
+                <input type="hidden" name="plan" value="Mensual Premium">
+                <input type="hidden" name="monto" value="50.00">
+                <button type="submit" class="btn">INSCRIBIRME</button>
+            </form>
+        </div>
+
+        <div class="plan-card">
+            <h2>Trimestral Básico</h2>
+            <p>💰 80,00€</p>
+            <p>Acceso ilimitado a gimnasio durante tres meses</p>
+            <p>80,00€ / 3 MESES</p>
+            <form action="pago.php" method="POST">
+                <input type="hidden" name="plan" value="Trimestral Básico">
+                <input type="hidden" name="monto" value="80.00">
+                <button type="submit" class="btn">INSCRIBIRME</button>
+            </form>
+        </div>
+
+        <div class="plan-card">
+            <h2>Trimestral Premium</h2>
+            <p>💰 130,00€</p>
+            <p>Acceso ilimitado + clases dirigidas durante tres meses</p>
+            <p>130,00€ / 3 MESES</p>
+            <form action="pago.php" method="POST">
+                <input type="hidden" name="plan" value="Trimestral Premium">
+                <input type="hidden" name="monto" value="130.00">
+                <button type="submit" class="btn">INSCRIBIRME</button>
+            </form>
+        </div>
+
+        <div class="plan-card">
+            <h2>Anual Básico</h2>
+            <p>💰 300,00€</p>
+            <p>Acceso ilimitado a gimnasio durante un año</p>
+            <p>300,00€ / AÑO</p>
+            <form action="pago.php" method="POST">
+                <input type="hidden" name="plan" value="Anual Básico">
+                <input type="hidden" name="monto" value="300.00">
+                <button type="submit" class="btn">INSCRIBIRME</button>
+            </form>
+        </div>
+
+        <div class="plan-card">
+            <h2>Anual Premium</h2>
+            <p>💰 500,00€</p>
+            <p>Acceso ilimitado + clases dirigidas durante un año</p>
+            <p>500,00€ / AÑO</p>
+            <form action="pago.php" method="POST">
+                <input type="hidden" name="plan" value="Anual Premium">
+                <input type="hidden" name="monto" value="500.00">
+                <button type="submit" class="btn">INSCRIBIRME</button>
+            </form>
+        </div>
+
+        <div class="plan-card">
+            <h2>Clase Individual</h2>
+            <p>💰 10,00€</p>
+            <p>Acceso a una sola clase</p>
+            <p>10,00€</p>
+            <form action="pago.php" method="POST">
+                <input type="hidden" name="plan" value="Clase Individual">
+                <input type="hidden" name="monto" value="10.00">
+                <button type="submit" class="btn">INSCRIBIRME</button>
+            </form>
+        </div>
+
+        <div class="plan-card">
+            <h2>Semana de Prueba</h2>
+            <p>💰 20,00€</p>
+            <p>Acceso al gimnasio por una semana</p>
+            <p>20,00€ / SEMANA</p>
+            <form action="pago.php" method="POST">
+                <input type="hidden" name="plan" value="Semana de Prueba">
+                <input type="hidden" name="monto" value="20.00">
+                <button type="submit" class="btn">INSCRIBIRME</button>
+            </form>
+        </div>
+    </div>
+    <!-- Botón para Volver -->
+    <div >
+        <a href="user_conf.php" class="btn">Volver</a>
+    </div>
+
+</body>
+</html>
+
+

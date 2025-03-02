@@ -20,9 +20,10 @@ include('conexion.php');
                 <div class="card p-4 shadow-sm">
                     <h1 class="text-center mb-4">Panel de Usuario</h1>
                     <ul class="list-group">
-                        <li class="list-group-item"><a href="clases_user.php" class="text-decoration-none">Mostrar Clases</a></li>
-                        <li class="list-group-item"><a href="pago.html" class="text-decoration-none">Mostrar Cuotas</a></li>
-                        <li class="list-group-item"><a href="horarios.php" class="text-decoration-none">Horarios</a></li>
+                        <li class="list-group-item"><a href="clases_user.php" class="text-decoration-none">Horarios</a></li>
+                        <li class="list-group-item"><a href="pago.html" class="text-decoration-none">Suscripciones</a></li>
+                        <li class="list-group-item"><a href="horarios.php" class="text-decoration-none">Unirse a Clases</a></li>
+                        <li class="list-group-item"><a href="horarios.php" class="text-decoration-none">Alimentacion</a></li>
                         <li class="list-group-item"><a href="salir.php" class="text-decoration-none text-danger">Cerrar Sesión</a></li>
                     </ul>
                 </div>
