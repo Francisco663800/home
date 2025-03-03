@@ -55,10 +55,17 @@ foreach ($usuarios as $usuario) {
                 <td>' . $usuario['id_usuario'] . '</td>
                 <td><input type="email" name="correo" value="' . $usuario['correo'] . '" class="form-control"></td>
                 <td>
-                    <select name="tipo" class="form-control">
-                        <option value="cliente" ' . ($usuario['tipo'] == 'cliente' ? 'selected' : '') . '>Cliente</option>
-                        <option value="trabajador" ' . ($usuario['tipo'] == 'trabajador' ? 'selected' : '') . '>Trabajador</option>
-                    </select>
+                    <select name="tipo" class="form-control">';
+    
+    if ($usuario['tipo'] == 'cliente') {
+        echo '<option value="cliente" selected>Cliente</option>';
+        echo '<option value="trabajador">Trabajador</option>';
+    } else {
+        echo '<option value="cliente">Cliente</option>';
+        echo '<option value="trabajador" selected>Trabajador</option>';
+    }
+
+    echo '      </select>
                 </td>
                 <td>
                     <input type="hidden" name="id_usuario" value="' . $usuario['id_usuario'] . '">

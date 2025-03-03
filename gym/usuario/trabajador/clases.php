@@ -70,10 +70,17 @@ foreach ($clases as $clase) {
                 <td>' . $clase['id_clase'] . '</td>
                 <td><input type="text" name="nombre" value="' . $clase['nombre'] . '" class="form-control"></td>
                 <td>
-                    <select name="tipo" class="form-control">
-                        <option value="grupal" ' . ($clase['tipo'] == 'grupal' ? 'selected' : '') . '>Grupal</option>
-                        <option value="individual" ' . ($clase['tipo'] == 'individual' ? 'selected' : '') . '>Individual</option>
-                    </select>
+                    <select name="tipo" class="form-control">';
+    
+    if ($clase['tipo'] == 'grupal') {
+        echo '<option value="grupal" selected>Grupal</option>';
+        echo '<option value="individual">Individual</option>';
+    } else {
+        echo '<option value="grupal">Grupal</option>';
+        echo '<option value="individual" selected>Individual</option>';
+    }
+
+    echo '      </select>
                 </td>
                 <td><input type="number" name="id_entrenador" value="' . $clase['id_entrenador'] . '" class="form-control"></td>
                 <td><input type="number" name="cupo_maximo" value="' . $clase['cupo_maximo'] . '" class="form-control"></td>

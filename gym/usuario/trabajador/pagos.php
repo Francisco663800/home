@@ -18,7 +18,7 @@ $query = "
     ORDER BY p.fecha_pago DESC
 ";
 $resultado = mysqli_query($conexion, $query);
-$pagos = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+$pagos = mysqli_fetch_all($resultado,MYSQLI_ASSOC );
 
 // Iniciar HTML con echo
 echo '<!DOCTYPE html>
