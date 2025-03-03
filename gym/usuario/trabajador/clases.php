@@ -1,61 +1,97 @@
 <?php
-// Incluir la conexión a la base de datos
-include('../conexion.php');
+session_start();
+require '../conexion.php';
 
-// Consulta para obtener todos los datos de la tabla clases
-$query = "SELECT id_clase, nombre, id_entrenador, cupo_maximo, horario, duracion FROM clases";
-$resultado = mysqli_query($conexion, $query);
-
-// Verificar si la consulta fue exitosa
-if (!$resultado) {
-    die("Error en la consulta: " . mysqli_error($conexion));
+// Verificar autenticación
+if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo'] !== 'trabajador') {
+    header("Location: login.php");
+    exit();
 }
-?>
 
-<!DOCTYPE html>
+// Obtener todas las clases
+$query = "SELECT id_clase, nombre, tipo, id_entrenador, cupo_maximo, horario, duracion FROM Clases ORDER BY id_clase ASC";
+$resultado = mysqli_query($conexion, $query);
+$clases = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+
+// Editar clase
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['editar'])) {
+    $id_clase = intval($_POST['id_clase']);
+    $nombre = $_POST['nombre'];
+    $tipo = $_POST['tipo'];
+    $id_entrenador = $_POST['id_entrenador'] ?: 'NULL';
+    $cupo_maximo = $_POST['cupo_maximo'];
+    $horario = $_POST['horario'];
+    $duracion = $_POST['duracion'];
+
+    $query_update = "UPDATE Clases SET 
+                        nombre = '$nombre', 
+                        tipo = '$tipo', 
+                        id_entrenador = $id_entrenador, 
+                        cupo_maximo = $cupo_maximo, 
+                        horario = '$horario', 
+                        duracion = $duracion 
+                    WHERE id_clase = $id_clase";
+    mysqli_query($conexion, $query_update);
+    header("Location: clases.php");
+    exit();
+}
+
+// Mostrar HTML con echo
+echo '<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Clases</title>
+    <title>Gestión de Clases</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Lista de Clases</h1>
-        <div class="table-responsive">
-            <table class="table table-striped table-bordered">
-                <thead class="table-dark">
+        <h1 class="text-center mb-4">Clases Registradas</h1>
+        <div class="card p-4 shadow-sm">
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <th>ID Clase</th>
+                        <th>ID</th>
                         <th>Nombre</th>
-                        <th>ID Entrenador</th>
-                        <th>Cupo Máximo</th>
+                        <th>Tipo</th>
+                        <th>Entrenador</th>
+                        <th>Cupo</th>
                         <th>Horario</th>
                         <th>Duración</th>
+                        <th>Acción</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <?php 
-                    foreach ($resultado as $row) {
-                        echo "<tr>";
-                        echo "<td>" . htmlspecialchars($row['id_clase']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['nombre']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['id_entrenador']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['cupo_maximo']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['horario']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['duracion']) . "</td>";
-                        echo "</tr>";
-                    }
-                    ?>
-                </tbody>
+                <tbody>';
+
+foreach ($clases as $clase) {
+    echo '<tr>
+            <form method="POST">
+                <td>' . $clase['id_clase'] . '</td>
+                <td><input type="text" name="nombre" value="' . $clase['nombre'] . '" class="form-control"></td>
+                <td>
+                    <select name="tipo" class="form-control">
+                        <option value="grupal" ' . ($clase['tipo'] == 'grupal' ? 'selected' : '') . '>Grupal</option>
+                        <option value="individual" ' . ($clase['tipo'] == 'individual' ? 'selected' : '') . '>Individual</option>
+                    </select>
+                </td>
+                <td><input type="number" name="id_entrenador" value="' . $clase['id_entrenador'] . '" class="form-control"></td>
+                <td><input type="number" name="cupo_maximo" value="' . $clase['cupo_maximo'] . '" class="form-control"></td>
+                <td><input type="time" name="horario" value="' . $clase['horario'] . '" class="form-control"></td>
+                <td><input type="number" name="duracion" value="' . $clase['duracion'] . '" class="form-control"></td>
+                <td>
+                    <input type="hidden" name="id_clase" value="' . $clase['id_clase'] . '">
+                    <button type="submit" name="editar" class="btn btn-success">Guardar</button>
+                </td>
+            </form>
+        </tr>';
+}
+
+echo '      </tbody>
             </table>
-        </div>
-        <div class="text-center mt-4">
-            <a href="trabajador_conf.php" class="btn btn-primary">Volver</a>
-            <a href="modificar_clase.php" class="btn btn-warning">Editar</a>
+            <a href="trabajador_conf.php" class="btn btn-secondary">Volver</a>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
+</html>';
+?>

@@ -45,5 +45,5 @@ if ($resultado) {
 }
 
 // Cerrar la conexión
-mysqli_close($conexion);
+
 ?>

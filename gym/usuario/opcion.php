@@ -47,7 +47,7 @@ if (isset($_COOKIE["tipo_clase"])) {
     <p>Última selección: 
         <?php 
         if ($tipo_preferido) {
-            echo ucfirst($tipo_preferido);
+            echo ($tipo_preferido);
         } else {
             echo "No seleccionada";
         }
