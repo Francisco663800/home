@@ -39,7 +39,7 @@ $resultado = mysqli_query($conexion, $sql);
 
 if ($resultado) {
     echo "Pago registrado con éxito. ¡Gracias por inscribirte!";
-    echo '<br><br><a href="pago.html">Volver</a>';
+    echo '<br><br><a href="user_conf.php">Volver</a>';
 } else {
     echo "Error al procesar el pago.";
 }

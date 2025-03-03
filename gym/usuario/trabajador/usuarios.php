@@ -1,6 +1,6 @@
 <?php
 // Incluir la conexión a la base de datos
-include('conexion.php');
+include('../conexion.php');
 
 // Consulta para obtener todos los datos de clientes
 $query = "SELECT id_cliente, nombre, apellido, fecha_nacimiento, telefono, correo, direccion, fecha_registro FROM clientes";

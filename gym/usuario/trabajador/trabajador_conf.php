@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'conexion.php';
+require '../conexion.php';
 
 // Verificar si el usuario está autenticado
 if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo'] !== 'trabajador') {
@@ -25,12 +25,10 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo'] !== 'trabajador') {
             <div class="card p-4 shadow-sm">
                 <h1 class="text-center mb-4">Panel de Trabajador</h1>
                 <ul class="list-group">
-                    <li class="list-group-item"><a href="perfil_trabajador.php" class="text-decoration-none">Mi Perfil</a></li>
-                    <li class="list-group-item"><a href="usuarios.php" class="text-decoration-none">Ver Clientes</a></li>
-                    <li class="list-group-item"><a href="alta.php" class="text-decoration-none">Registrar Cliente</a></li>
+                    <li class="list-group-item"><a href="usuarios.php" class="text-decoration-none">Gestionar Clientes Gestionar</a></li>
                     <li class="list-group-item"><a href="clases.php" class="text-decoration-none">Gestionar Clases</a></li>
                     <li class="list-group-item"><a href="pagos.php" class="text-decoration-none">Ver Pagos</a></li>
-                    <li class="list-group-item"><a href="salir.php" class="text-decoration-none text-danger">Cerrar Sesión</a></li>
+                    <li class="list-group-item"><a href="../salir.php" class="text-decoration-none text-danger">Cerrar Sesión</a></li>
                 </ul>
             </div>
         </div>

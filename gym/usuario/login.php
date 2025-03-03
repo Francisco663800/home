@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($usuario['tipo'] === 'cliente') {
             header("Location: user_conf.php");
         } else {
-            header("Location: trabajador_conf.php");
+            header("Location: trabajador/trabajador_conf.php");
         }
         exit();
     } else {

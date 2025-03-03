@@ -1,6 +1,6 @@
 <?php
 // Incluir la conexión a la base de datos
-include('conexion.php');
+include('../conexion.php');
 
 // Consulta para obtener todos los datos de la tabla clases
 $query = "SELECT id_clase, nombre, id_entrenador, cupo_maximo, horario, duracion FROM clases";
