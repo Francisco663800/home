@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Consultar usuario en la base de datos
     $sql = "SELECT * FROM usuarios WHERE correo = '$correo'";
     $resultado = mysqli_query($conexion, $sql);
-    $usuario = mysqli_fetch_assoc($resultado);
+    $usuario = mysqli_fetch_assoc($resultado); //toma la primera fila del resultado y la almacena en $usuario como un array asociativo
 
     if ($usuario && $usuario['password'] === $password) { // Comparar contraseña cifrada
         $_SESSION['id_usuario'] = $usuario['id_usuario'];

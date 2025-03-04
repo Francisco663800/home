@@ -27,7 +27,4 @@ if (!mysqli_select_db($conexion, $nombre_base_datos)) {
 // mysqli_close($conexion);
 
 
-
-
-
 ?>

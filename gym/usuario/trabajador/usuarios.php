@@ -25,6 +25,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['editar'])) {
     exit();
 }
 
+// Eliminar usuario
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['borrar'])) {
+    $id_usuario = intval($_POST['id_usuario']);
+
+    $query_delete = "DELETE FROM Usuarios WHERE id_usuario = $id_usuario";
+    mysqli_query($conexion, $query_delete);
+    header("Location: usuarios.php");
+    exit();
+}
+
 // Mostrar HTML con echo
 echo '<!DOCTYPE html>
 <html lang="es">
@@ -70,6 +80,7 @@ foreach ($usuarios as $usuario) {
                 <td>
                     <input type="hidden" name="id_usuario" value="' . $usuario['id_usuario'] . '">
                     <button type="submit" name="editar" class="btn btn-success">Guardar</button>
+                    <button type="submit" name="borrar" class="btn btn-danger" ;">Borrar</button>
                 </td>
             </form>
         </tr>';
@@ -83,3 +94,4 @@ echo '      </tbody>
 </body>
 </html>';
 ?>
+
