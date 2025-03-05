@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['borrar'])) {
     exit();
 }
 
-// Mostrar HTML con echo
+// Mostrar HTML 
 echo '<!DOCTYPE html>
 <html lang="es">
 <head>

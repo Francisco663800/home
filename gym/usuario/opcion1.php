@@ -17,9 +17,8 @@ if (isset($_COOKIE["ultima_clase_nombre"])) {
 } else {
     $ultima_clase = "Ninguna";
 }
-?>
 
-<!DOCTYPE html>
+echo '<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -29,24 +28,29 @@ if (isset($_COOKIE["ultima_clase_nombre"])) {
 </head>
 <body>
     <h1>Selecciona una Clase Grupal</h1>
-    <p>Última clase reservada: <?php echo $ultima_clase; ?></p>
+    <p>Última clase reservada: ' . $ultima_clase . '</p>
 
     <form action="reservar.php" method="POST">
         <input type="hidden" name="tipo" value="grupal">
         <label for="clase">Elige una clase:</label>
-        <select name="id_clase" required>
-            <?php foreach ($clases as $fila): ?>
-                <option value="<?php echo $fila['id_clase']; ?>">
-                    <?php echo $fila['nombre'] . " - " . $fila['horario']; ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
+        <select name="id_clase" required>';
+        
+        foreach ($clases as $fila) {
+            echo '<option value="' . $fila['id_clase'] . '">' . $fila['nombre'] . ' - ' . $fila['horario'] . '</option>';
+        }
+
+echo '  </select>
         <button type="submit">Reservar</button>
     </form>
 
     <br><br>
     <a href="opcion.php">Volver</a>
 </body>
-</html>
+</html>';
 
-<?php mysqli_close($conexion); ?>
+mysqli_close($conexion);
+?>
+
+
+
+
